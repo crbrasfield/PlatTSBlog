@@ -1,0 +1,10 @@
+<div id="blog-container">
+<h1>Postlist page!</h1>
+<plat-button plat-tap="ComposePost()" class="button-primary">Create New Post</plat-button>
+<plat-foreach plat-context="posts" class="product-list">
+    <h3 class="postTitle">{{title}}</h3>
+    <h4 class="postAuthor">{{author}}</h4>
+    <h5 class="postCreatedAt">{{createdAt}}</h5>
+    <plat-button class="button-primary button-outline button-small" plat-tap="getSpecificPost(id)">View Post</plat-button>
+</plat-foreach>
+</div>

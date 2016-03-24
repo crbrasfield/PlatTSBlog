@@ -1,0 +1,16 @@
+<div id="blog-newpost-container">
+    <h1>Compose your new post below.</h1>
+
+
+    <plat-input plat-bind="post.title" placeholder="Title"></plat-input>
+    <br>
+    <br>
+    <plat-input plat-bind="post.author" placeholder="Author"></plat-input>
+    <br>
+    <br>
+    <textarea rows="15" cols="45" plat-bind="post.content" placeholder="Post here"></textarea>
+    <br>
+    <br>
+
+    <plat-button id="submit-button" class="button-primary" plat-tap="submitPost()">Submit</button>
+</div>
