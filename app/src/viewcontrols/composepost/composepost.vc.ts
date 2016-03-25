@@ -2,12 +2,14 @@ import {register} from 'platypus';
 import BaseViewControl from '../base/base.vc';
 import PostrequestsService from '../../services/postrequests/postrequests.svc';
 import PostlistViewControl from '../../viewcontrols/postlist/postlist.vc';
+import PostRepository from '../../repositories/postrepository/postrepository.repo';
+
 
 
 
 export default class ComposePostViewControl extends BaseViewControl {
 
-    constructor(private postSvc: PostrequestsService) {
+    constructor(private postRepo: PostRepository) {
         super();
     };
 
@@ -28,15 +30,11 @@ export default class ComposePostViewControl extends BaseViewControl {
             author: this.context.post.author,
             content: this.context.post.content
         }
-        this.postSvc.newPost(blogPost).then((success: Array<models.IPost>) => {
+        this.postRepo.newPost(blogPost).then((success: Array<models.IPost>) => {
             console.log(blogPost);
             console.log(success);
             this.navigator.navigate(PostlistViewControl)
-
         });
-
-
-
 
 
     }
@@ -45,4 +43,4 @@ export default class ComposePostViewControl extends BaseViewControl {
 
 }
 
-register.viewControl('composepost-vc', ComposePostViewControl, [PostrequestsService]);
+register.viewControl('composepost-vc', ComposePostViewControl, [PostrequestsService, PostRepository]);

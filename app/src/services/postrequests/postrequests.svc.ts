@@ -3,6 +3,8 @@ import BaseService from '../base/base.svc';
 
 export default class PostrequestsService extends BaseService {
 
+    
+    
     getPosts(): async.IAjaxThenable<Array<models.IPost>> {
         return this.http.json<Array<models.IPost>>({
             method: 'GET',

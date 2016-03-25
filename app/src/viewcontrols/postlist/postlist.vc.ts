@@ -2,11 +2,12 @@ import {register} from 'platypus';
 import BaseViewControl from '../base/base.vc';
 import PostrequestsService from '../../services/postrequests/postrequests.svc';
 import ComposepostViewControl from '../composepost/composepost.vc';
-import SinglepostViewControl from '../singlepost/singlepost.vc':
+import SinglepostViewControl from '../singlepost/singlepost.vc';
+import PostRepository from '../../repositories/postrepository/postrepository.repo'
 
 export default class PostListViewControl extends BaseViewControl {
 
-    constructor(private postSvc: PostrequestsService) {
+    constructor(private postRepo: PostRepository) {
         super();
     };
 
@@ -19,10 +20,11 @@ export default class PostListViewControl extends BaseViewControl {
     }
 
     navigatedTo(): void {
-        this.postSvc.getPosts().then((posts) => {
+        this.postRepo.getPosts().then((posts) => {
             this.context.posts = posts.reverse();
-            console.log(posts);
         });
+
+
     }
 
     getSpecificPost(id: string): void {
@@ -41,4 +43,6 @@ export default class PostListViewControl extends BaseViewControl {
 
 
 
-register.viewControl('postlist-vc', PostListViewControl, [PostrequestsService]);
+
+
+register.viewControl('postlist-vc', PostListViewControl, [PostrequestsService, PostRepository]);
